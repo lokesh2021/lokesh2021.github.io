@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Snake Game | Lokesh B M</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../games-nav.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐍</text></svg>">
+</head>
+<body>
+    <nav class="game-nav">
+        <a href="../../index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Portfolio
+        </a>
+        <h1 class="game-title">🐍 Snake</h1>
+        <div class="high-score">🏆 <span id="highScore">0</span></div>
+    </nav>
+
+    <main class="game-container">
+        <!-- Intro Screen -->
+        <section class="screen intro-screen active" id="intro">
+            <div class="screen-content">
+                <div class="game-icon">🐍</div>
+                <h1>Snake</h1>
+                <p class="tagline">The classic game, reimagined!</p>
+                
+                <div class="controls-info">
+                    <h3>Controls</h3>
+                    <div class="control-grid">
+                        <div class="control-item">
+                            <span class="key">↑ ↓ ← →</span>
+                            <span class="desc">Arrow Keys</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">W A S D</span>
+                            <span class="desc">WASD Keys</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">👆</span>
+                            <span class="desc">Swipe (Mobile)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" id="startGame">
+                    <span>Start Game</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                </button>
+
+                <div class="best-score">
+                    <span class="label">High Score</span>
+                    <span class="value" id="bestScoreDisplay">0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Screen -->
+        <section class="screen game-screen" id="game">
+            <div class="game-hud">
+                <div class="score-display">
+                    <span class="score-label">Score</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+                <div class="power-ups" id="powerUps"></div>
+            </div>
+
+            <div class="game-wrapper">
+                <canvas id="gameCanvas"></canvas>
+                <div class="game-overlay" id="pauseOverlay">
+                    <div class="overlay-content">
+                        <span class="overlay-icon">⏸️</span>
+                        <h2>Paused</h2>
+                        <p>Press Space to continue</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-controls" id="mobileControls">
+                <button class="control-btn up" data-dir="up">↑</button>
+                <div class="control-row">
+                    <button class="control-btn left" data-dir="left">←</button>
+                    <button class="control-btn right" data-dir="right">→</button>
+                </div>
+                <button class="control-btn down" data-dir="down">↓</button>
+            </div>
+        </section>
+
+        <!-- Game Over Screen -->
+        <section class="screen gameover-screen" id="gameover">
+            <div class="screen-content">
+                <div class="gameover-icon" id="gameoverIcon">💀</div>
+                <h2 id="gameoverTitle">Game Over!</h2>
+                
+                <div class="final-score">
+                    <span class="score-value" id="finalScore">0</span>
+                    <span class="score-label">points</span>
+                </div>
+
+                <div class="new-record" id="newRecord" style="display: none;">
+                    🏆 New High Score!
+                </div>
+
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="finalLength">0</span>
+                        <span class="stat-label">Length</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="foodEaten">0</span>
+                        <span class="stat-label">Food Eaten</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="playTime">0:00</span>
+                        <span class="stat-label">Time</span>
+                    </div>
+                </div>
+
+                <div class="gameover-actions">
+                    <button class="btn-primary" id="playAgain">Play Again</button>
+                    <button class="btn-secondary" id="backToMenu">Menu</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="../games-nav.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Time Test | Lokesh B M</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../games-nav.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+    <nav class="game-nav">
+        <a href="../../index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Portfolio
+        </a>
+        <a href="../../rock_paper_scissors/index.html" class="other-game">
+            Play Rock Paper Scissors →
+        </a>
+    </nav>
+
+    <main class="game-container">
+        <!-- Intro Screen -->
+        <section class="screen intro-screen active" id="intro">
+            <div class="screen-content">
+                <div class="game-icon">⚡</div>
+                <h1>Reaction Time</h1>
+                <p class="tagline">How fast are your reflexes? Test your reaction speed!</p>
+                
+                <div class="how-to-play">
+                    <h3>How to Play</h3>
+                    <ol>
+                        <li>Click the button to start</li>
+                        <li>Wait for the screen to turn <span class="green">green</span></li>
+                        <li>Click as fast as you can!</li>
+                    </ol>
+                </div>
+                
+                <button class="btn-primary" id="startBtn">
+                    <span>Start Test</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                </button>
+                
+                <div class="best-time">
+                    <span class="label">Your Best Time</span>
+                    <span class="value" id="bestTimeDisplay">---</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Waiting Screen -->
+        <section class="screen waiting-screen" id="waiting">
+            <div class="screen-content">
+                <div class="pulse-ring"></div>
+                <div class="waiting-icon">🎯</div>
+                <h2>Wait for green...</h2>
+                <p>Don't click yet!</p>
+            </div>
+        </section>
+
+        <!-- Ready Screen (Green - Click Now!) -->
+        <section class="screen ready-screen" id="ready">
+            <div class="screen-content">
+                <div class="ready-icon">👆</div>
+                <h2>CLICK NOW!</h2>
+                <p>Click as fast as you can!</p>
+            </div>
+        </section>
+
+        <!-- Too Early Screen -->
+        <section class="screen early-screen" id="early">
+            <div class="screen-content">
+                <div class="early-icon">😬</div>
+                <h2>Too Early!</h2>
+                <p>You clicked before it turned green</p>
+                <button class="btn-primary" id="tryAgainEarly">
+                    <span>Try Again</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Result Screen -->
+        <section class="screen result-screen" id="result">
+            <div class="screen-content">
+                <div class="result-icon" id="resultIcon">⚡</div>
+                <h2 id="resultTitle">Nice!</h2>
+                <div class="result-time">
+                    <span class="time-value" id="reactionTime">0</span>
+                    <span class="time-unit">ms</span>
+                </div>
+                <p class="result-message" id="resultMessage">That's pretty fast!</p>
+                
+                <div class="result-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="attemptNumber">1</span>
+                        <span class="stat-label">Attempt</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="averageTime">---</span>
+                        <span class="stat-label">Average</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="bestTime">---</span>
+                        <span class="stat-label">Best</span>
+                    </div>
+                </div>
+                
+                <div class="speed-meter">
+                    <div class="meter-bar">
+                        <div class="meter-fill" id="meterFill"></div>
+                        <div class="meter-markers">
+                            <span>500ms</span>
+                            <span>300ms</span>
+                            <span>200ms</span>
+                            <span>100ms</span>
+                        </div>
+                    </div>
+                    <div class="speed-labels">
+                        <span>Slow</span>
+                        <span>Fast</span>
+                        <span>Pro</span>
+                        <span>Insane</span>
+                    </div>
+                </div>
+                
+                <div class="result-actions">
+                    <button class="btn-primary" id="tryAgainBtn">
+                        <span>Try Again</span>
+                    </button>
+                    <button class="btn-secondary" id="shareBtn">
+                        <span>Share Result</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Sidebar -->
+        <aside class="leaderboard" id="leaderboard">
+            <h3>🏆 Your History</h3>
+            <ul class="history-list" id="historyList">
+                <li class="empty-state">No attempts yet. Start playing!</li>
+            </ul>
+            <button class="btn-clear" id="clearHistory">Clear History</button>
+        </aside>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="../games-nav.js"></script>
+</body>
+</html>
+

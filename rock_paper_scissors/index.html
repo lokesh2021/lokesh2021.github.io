@@ -1,44 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Rock Paper and Scissors</title>
-  </head>
-  <body>
-    <section class="game">
-      <div class="score">
-        <div class="player-score">
-          <h2>Player</h2>
-          <p>0</p>
-        </div>
-        <div class="computer-score">
-          <h2>Computer</h2>
-          <p>0</p>
-        </div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors | Lokesh B M</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../games/games-nav.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-effects">
+        <div class="floating-emoji emoji-1">🪨</div>
+        <div class="floating-emoji emoji-2">📄</div>
+        <div class="floating-emoji emoji-3">✂️</div>
+        <div class="floating-emoji emoji-4">🪨</div>
+        <div class="floating-emoji emoji-5">📄</div>
+        <div class="floating-emoji emoji-6">✂️</div>
+    </div>
 
-      <div class="intro">
-        <h1>Rock Paper and Scissors</h1>
-        <button>Let's Play</button>
-      </div>
+    <nav class="game-nav">
+        <a href="../index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Portfolio
+        </a>
+        <a href="../games/reaction/index.html" class="other-game">
+            Try Reaction Game →
+        </a>
+    </nav>
 
-      <div class="match fadeOut">
-        <h2 class="winner">Choose an option</h2>
-        <div class="hands">
-          <img class="player-hand" src="./assets/rock.png" alt="" />
-          <img class="computer-hand" src="./assets/rock.png" alt="" />
-        </div>
+    <main class="game-container">
+        <!-- Intro Screen -->
+        <section class="intro-screen active" id="intro">
+            <div class="intro-content">
+                <div class="game-icon">
+                    <span class="icon-rock">🪨</span>
+                    <span class="icon-paper">📄</span>
+                    <span class="icon-scissors">✂️</span>
+                </div>
+                <h1>Rock Paper Scissors</h1>
+                <p class="tagline">The classic battle of wits. Can you beat the AI?</p>
+                <button class="btn-play" id="startGame">
+                    <span>Start Game</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                </button>
+                <div class="game-rules">
+                    <h3>How to play</h3>
+                    <div class="rules-grid">
+                        <div class="rule">🪨 beats ✂️</div>
+                        <div class="rule">✂️ beats 📄</div>
+                        <div class="rule">📄 beats 🪨</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="options">
-          <button class="rock">rock</button>
-          <button class="paper">paper</button>
-          <button class="scissors">scissors</button>
-        </div>
-      </div>
-    </section>
+        <!-- Game Screen -->
+        <section class="game-screen" id="game">
+            <!-- Scoreboard -->
+            <div class="scoreboard">
+                <div class="score-card player-score">
+                    <div class="score-avatar">👤</div>
+                    <div class="score-info">
+                        <span class="score-label">You</span>
+                        <span class="score-value" id="playerScore">0</span>
+                    </div>
+                </div>
+                <div class="vs-badge">
+                    <span>VS</span>
+                </div>
+                <div class="score-card computer-score">
+                    <div class="score-info">
+                        <span class="score-label">AI</span>
+                        <span class="score-value" id="computerScore">0</span>
+                    </div>
+                    <div class="score-avatar">🤖</div>
+                </div>
+            </div>
+
+            <!-- Battle Arena -->
+            <div class="battle-arena">
+                <div class="hand-container player-container">
+                    <div class="hand-label">Your Choice</div>
+                    <div class="hand player-hand" id="playerHand">
+                        <span class="hand-emoji">❓</span>
+                    </div>
+                </div>
+
+                <div class="result-display" id="resultDisplay">
+                    <span class="result-text">Choose your weapon!</span>
+                </div>
+
+                <div class="hand-container computer-container">
+                    <div class="hand-label">AI Choice</div>
+                    <div class="hand computer-hand" id="computerHand">
+                        <span class="hand-emoji">❓</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Choice Buttons -->
+            <div class="choices">
+                <button class="choice-btn" data-choice="rock">
+                    <span class="choice-emoji">🪨</span>
+                    <span class="choice-label">Rock</span>
+                </button>
+                <button class="choice-btn" data-choice="paper">
+                    <span class="choice-emoji">📄</span>
+                    <span class="choice-label">Paper</span>
+                </button>
+                <button class="choice-btn" data-choice="scissors">
+                    <span class="choice-emoji">✂️</span>
+                    <span class="choice-label">Scissors</span>
+                </button>
+            </div>
+
+            <!-- Round Counter -->
+            <div class="round-info">
+                <span>Round <span id="roundNumber">1</span></span>
+                <button class="btn-reset" id="resetGame">Reset Game</button>
+            </div>
+        </section>
+
+        <!-- Victory Screen -->
+        <section class="victory-screen" id="victory">
+            <div class="victory-content">
+                <div class="victory-icon" id="victoryIcon">🏆</div>
+                <h2 id="victoryTitle">Game Over!</h2>
+                <p id="victoryMessage">Final Score: 5 - 3</p>
+                <div class="victory-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="finalPlayerScore">0</span>
+                        <span class="stat-label">Your Wins</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="finalComputerScore">0</span>
+                        <span class="stat-label">AI Wins</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalRounds">0</span>
+                        <span class="stat-label">Rounds</span>
+                    </div>
+                </div>
+                <button class="btn-play" id="playAgain">
+                    <span>Play Again</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6M1 20v-6h6"/>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+    </main>
 
     <script src="app.js"></script>
-  </body>
+    <script src="../games/games-nav-rps.js"></script>
+</body>
 </html>

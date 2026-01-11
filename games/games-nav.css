@@ -1,0 +1,144 @@
+/* Floating Games Navigation - Shared across all games */
+.floating-games {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    z-index: 9999;
+}
+
+.games-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, #f7a600 0%, #f54e00 100%);
+    border: none;
+    border-radius: 9999px;
+    color: #0d0f14;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(247, 166, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.games-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 30px rgba(247, 166, 0, 0.5);
+}
+
+.toggle-icon {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.floating-games.open .toggle-icon {
+    transform: rotate(15deg);
+}
+
+.games-menu {
+    position: absolute;
+    bottom: calc(100% + 0.75rem);
+    left: 0;
+    background: rgba(21, 24, 34, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 0.5rem;
+    min-width: 220px;
+    max-height: 70vh;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.95);
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.floating-games.open .games-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.games-menu-header {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 0.25rem;
+}
+
+.game-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    transition: all 0.15s ease;
+    text-decoration: none;
+}
+
+.game-link:hover {
+    background: rgba(247, 166, 0, 0.1);
+}
+
+.game-link.current {
+    background: rgba(247, 166, 0, 0.15);
+    border: 1px solid rgba(247, 166, 0, 0.3);
+}
+
+.game-emoji {
+    font-size: 1.25rem;
+    width: 32px;
+    text-align: center;
+}
+
+.game-name {
+    font-weight: 600;
+    color: #f9fafb;
+    font-size: 0.9rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .floating-games {
+        bottom: 1rem;
+        left: 1rem;
+    }
+    
+    .games-toggle {
+        padding: 0.6rem 1rem;
+    }
+    
+    .toggle-text {
+        display: none;
+    }
+    
+    .toggle-icon {
+        font-size: 1.4rem;
+    }
+    
+    .games-menu {
+        min-width: 200px;
+        max-height: 60vh;
+    }
+    
+    .game-link {
+        padding: 0.6rem 0.75rem;
+    }
+    
+    .game-emoji {
+        font-size: 1.1rem;
+        width: 28px;
+    }
+    
+    .game-name {
+        font-size: 0.85rem;
+    }
+}
+

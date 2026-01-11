@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Match | Lokesh B M</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../games-nav.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+</head>
+<body>
+    <nav class="game-nav">
+        <a href="../../index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Portfolio
+        </a>
+        <h1 class="game-title">🧠 Memory Match</h1>
+        <div class="nav-spacer"></div>
+    </nav>
+
+    <main class="game-container">
+        <!-- Intro/Settings Screen -->
+        <section class="screen intro-screen active" id="intro">
+            <div class="screen-content">
+                <div class="game-icon">🧠</div>
+                <h1>Memory Match</h1>
+                <p class="tagline">Test your memory! Find all matching pairs.</p>
+                
+                <div class="difficulty-selector">
+                    <h3>Select Difficulty</h3>
+                    <div class="difficulty-options">
+                        <button class="diff-btn active" data-size="4">
+                            <span class="diff-grid">4×4</span>
+                            <span class="diff-label">Easy</span>
+                            <span class="diff-pairs">8 pairs</span>
+                        </button>
+                        <button class="diff-btn" data-size="6">
+                            <span class="diff-grid">6×6</span>
+                            <span class="diff-label">Medium</span>
+                            <span class="diff-pairs">18 pairs</span>
+                        </button>
+                        <button class="diff-btn" data-size="8">
+                            <span class="diff-grid">8×8</span>
+                            <span class="diff-label">Hard</span>
+                            <span class="diff-pairs">32 pairs</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="theme-selector">
+                    <h3>Card Theme</h3>
+                    <div class="theme-options">
+                        <button class="theme-btn active" data-theme="emoji">😀 Emoji</button>
+                        <button class="theme-btn" data-theme="tech">💻 Tech</button>
+                        <button class="theme-btn" data-theme="animals">🐾 Animals</button>
+                        <button class="theme-btn" data-theme="food">🍕 Food</button>
+                    </div>
+                </div>
+
+                <button class="btn-primary" id="startGame">
+                    <span>Start Game</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                </button>
+
+                <div class="best-score">
+                    <span class="label">Best Score (4×4)</span>
+                    <span class="value" id="bestScoreDisplay">---</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Screen -->
+        <section class="screen game-screen" id="game">
+            <div class="game-stats">
+                <div class="stat-box">
+                    <span class="stat-icon">⏱️</span>
+                    <span class="stat-value" id="timer">0:00</span>
+                    <span class="stat-label">Time</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-icon">🔄</span>
+                    <span class="stat-value" id="moves">0</span>
+                    <span class="stat-label">Moves</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-icon">✅</span>
+                    <span class="stat-value" id="matched">0/8</span>
+                    <span class="stat-label">Matched</span>
+                </div>
+            </div>
+
+            <div class="game-board" id="gameBoard">
+                <!-- Cards will be generated here -->
+            </div>
+
+            <div class="game-controls">
+                <button class="btn-secondary" id="restartGame">🔄 Restart</button>
+                <button class="btn-secondary" id="backToMenu">📋 Menu</button>
+            </div>
+        </section>
+
+        <!-- Victory Screen -->
+        <section class="screen victory-screen" id="victory">
+            <div class="screen-content">
+                <div class="victory-icon">🎉</div>
+                <h2>Congratulations!</h2>
+                <p class="victory-message">You found all the pairs!</p>
+                
+                <div class="victory-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="finalTime">0:00</span>
+                        <span class="stat-label">Time</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="finalMoves">0</span>
+                        <span class="stat-label">Moves</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="finalScore">0</span>
+                        <span class="stat-label">Score</span>
+                    </div>
+                </div>
+
+                <div class="new-record" id="newRecord" style="display: none;">
+                    🏆 New Best Score!
+                </div>
+
+                <div class="victory-actions">
+                    <button class="btn-primary" id="playAgain">Play Again</button>
+                    <button class="btn-secondary" id="changeDifficulty">Change Difficulty</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="../games-nav.js"></script>
+</body>
+</html>
+

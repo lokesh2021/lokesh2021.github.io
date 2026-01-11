@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>2048 | Lokesh B M</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../games-nav.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔢</text></svg>">
+</head>
+<body>
+    <nav class="game-nav">
+        <a href="../../index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Portfolio
+        </a>
+        <h1 class="game-title">🔢 2048</h1>
+        <div class="nav-spacer"></div>
+    </nav>
+
+    <main class="game-container">
+        <div class="game-wrapper">
+            <header class="game-header">
+                <div class="title-section">
+                    <h1>2048</h1>
+                    <p class="tagline">Join the numbers!</p>
+                </div>
+                <div class="scores">
+                    <div class="score-box">
+                        <span class="score-label">Score</span>
+                        <span class="score-value" id="score">0</span>
+                    </div>
+                    <div class="score-box best">
+                        <span class="score-label">Best</span>
+                        <span class="score-value" id="bestScore">0</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="game-controls-top">
+                <button class="control-btn" id="newGame">
+                    <span class="btn-icon">🔄</span>
+                    New Game
+                </button>
+                <button class="control-btn" id="undoBtn" disabled>
+                    <span class="btn-icon">↩️</span>
+                    Undo
+                </button>
+            </div>
+
+            <div class="game-board-container">
+                <div class="game-board" id="gameBoard">
+                    <!-- Tiles will be generated here -->
+                </div>
+                
+                <!-- Game Over Overlay -->
+                <div class="game-overlay" id="gameOverOverlay">
+                    <div class="overlay-content">
+                        <h2>Game Over!</h2>
+                        <p>Final Score: <span id="finalScore">0</span></p>
+                        <button class="btn-primary" id="tryAgain">Try Again</button>
+                    </div>
+                </div>
+                
+                <!-- Win Overlay -->
+                <div class="game-overlay win-overlay" id="winOverlay">
+                    <div class="overlay-content">
+                        <div class="win-icon">🎉</div>
+                        <h2>You Win!</h2>
+                        <p>You reached 2048!</p>
+                        <div class="win-actions">
+                            <button class="btn-primary" id="keepPlaying">Keep Playing</button>
+                            <button class="btn-secondary" id="newGameWin">New Game</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <p><strong>How to play:</strong> Use arrow keys or swipe to move tiles. When two tiles with the same number touch, they merge into one!</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="../games-nav.js"></script>
+</body>
+</html>
+
